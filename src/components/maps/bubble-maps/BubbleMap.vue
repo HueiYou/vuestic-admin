@@ -1,5 +1,5 @@
 <template>
-  <div class="bubble-map"></div>
+  <div class="bubble-map fill-height" />
 </template>
 
 <script>
@@ -19,16 +19,15 @@ export default {
   methods: {
     drawMap () {
       /* global AmCharts */
-      let map
-      let minBulletSize = 3
-      let maxBulletSize = 70
+      const minBulletSize = 3
+      const maxBulletSize = 70
       let min = Infinity
       let max = -Infinity
       AmCharts.theme = AmCharts.themes.light
 
       // get min and max values
       this.mapData.data.forEach((dataItem) => {
-        let value = dataItem.value
+        const value = dataItem.value
         if (value < min) {
           min = value
         }
@@ -38,7 +37,7 @@ export default {
       })
 
       // build map
-      map = new AmCharts.AmMap()
+      const map = new AmCharts.AmMap()
 
       map.projection = 'winkel3'
       map.addTitle('Population of the World in 2011', 14, 1, 1, false)
@@ -47,33 +46,33 @@ export default {
         unlistedAreasColor: '#eee',
         unlistedAreasAlpha: 1,
         outlineColor: '#fff',
-        outlineThickness: 2
+        outlineThickness: 2,
       }
       map.imagesSettings = {
         balloonText: '<span style="font-size:14px"><b>[[title]]</b>: [[value]]</span>',
-        alpha: 0.75
+        alpha: 0.75,
       }
 
-      let dataProvider = {
+      const dataProvider = {
         mapVar: AmCharts.maps.worldLow,
-        images: []
+        images: [],
       }
 
       // create circle for each country
       // it's better to use circle square to show difference between values, not a radius
-      var maxSquare = maxBulletSize * maxBulletSize * 2 * Math.PI
-      var minSquare = minBulletSize * minBulletSize * 2 * Math.PI
+      const maxSquare = maxBulletSize * maxBulletSize * 2 * Math.PI
+      const minSquare = minBulletSize * minBulletSize * 2 * Math.PI
 
       // create circle for each country
       this.mapData.data.forEach((dataItem) => {
-        var value = dataItem.value
+        const value = dataItem.value
         // calculate size of a bubble
-        var square = (value - min) / (max - min) * (maxSquare - minSquare) + minSquare
+        let square = (value - min) / (max - min) * (maxSquare - minSquare) + minSquare
         if (square < minSquare) {
           square = minSquare
         }
-        var size = Math.sqrt(square / (Math.PI * 2))
-        var id = dataItem.code
+        const size = Math.sqrt(square / (Math.PI * 2))
+        const id = dataItem.code
         dataProvider.images.push({
           type: 'circle',
           width: size,
@@ -82,25 +81,17 @@ export default {
           longitude: this.mapData.latlong[id].longitude,
           latitude: this.mapData.latlong[id].latitude,
           title: dataItem.name,
-          value: value
+          value: value,
         })
       })
 
       map.dataProvider = dataProvider
       map.write(this.$el)
-    }
+    },
   },
 
   mounted () {
     this.drawMap()
-  }
+  },
 }
 </script>
-
-<style lang='scss'>
-  @import '~ammap3/ammap/ammap.css';
-
-  .bubble-map {
-    height: 100%;
-  }
-</style>
