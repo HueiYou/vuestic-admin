@@ -1,36 +1,39 @@
 <template>
-  <va-tree-root>
+  <vuestic-tree-root>
 
-    <va-tree-category label="Electronics">
-      <va-tree-node v-for="electronic in electronics" :key="electronic.id">
-        <va-input v-model="electronic.name" class="mb-0"/>
-      </va-tree-node>
-    </va-tree-category>
-
-    <va-tree-category isOpen label="Products">
-      <va-tree-node
-        v-for="product in products"
-        :key="product.id"
-      >
-        <div class="flex row align--center">
-          <va-input v-model="product.name" class="mb-0"/>
-          <va-icon
-            name="ion ion-md-close"
-            color="info"
-            class="ml-2 pa-1 shrink"
-            style="cursor: pointer;"
-            @click.native="removeProduct(product)"
-          />
+    <vuestic-tree-category label="Electronics">
+      <vuestic-tree-node v-for="electronic in electronics" :key="electronic.id">
+        <div class="form-group">
+          <div class="input-group">
+            <input v-model="electronic.name">
+            <i class="bar"></i>
+          </div>
         </div>
-      </va-tree-node>
-      <va-tree-node>
-        <va-button class="mb-2" @click="addProduct()">
-          Add new product
-        </va-button>
-      </va-tree-node>
-    </va-tree-category>
+      </vuestic-tree-node>
+    </vuestic-tree-category>
 
-  </va-tree-root>
+    <vuestic-tree-category isOpen label="Products">
+      <vuestic-tree-node v-for="product in products" :key="product.id">
+        <div class="form-group">
+          <div class="input-group">
+            <input v-model="product.name">
+            <i class="bar"></i>
+          </div>
+        </div>
+        <div slot="iconRight" class="icon" @click="removeProduct(product)">
+          <span aria-hidden="true" class="ion ion-md-close"/>
+        </div>
+      </vuestic-tree-node>
+      <vuestic-tree-node>
+        <button class="btn btn-primary btn-micro mb-2"
+                @click="addProduct()"
+        >
+          Add new product
+        </button>
+      </vuestic-tree-node>
+    </vuestic-tree-category>
+
+  </vuestic-tree-root>
 </template>
 
 <script>
@@ -54,12 +57,16 @@ export default {
     addProduct () {
       this.products.push({
         id: Math.floor(Math.random() * 100000),
-        name: 'New product',
+        name: 'New product'
       })
     },
     removeProduct (product) {
       this.products = this.products.filter(productToFilter => productToFilter !== product)
-    },
+    }
   },
 }
 </script>
+
+<style scoped>
+
+</style>

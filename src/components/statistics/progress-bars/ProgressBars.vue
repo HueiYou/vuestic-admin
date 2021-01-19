@@ -1,22 +1,12 @@
 <template>
   <div class="progress-bars">
     <div class="row">
-      <div class="flex xs12">
-        <horizontal-bars/>
+      <div class="col-md-12">
+        <standard-bars/>
       </div>
     </div>
     <div class="row">
-      <div class="flex xs12">
-        <bars-state/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="flex xs12">
-        <circle-bars/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="flex xs12">
+      <div class="col-md-12">
         <colorful-bars/>
       </div>
     </div>
@@ -24,13 +14,11 @@
 </template>
 
 <script>
-import HorizontalBars from './Widgets/HorizontalBars'
-import CircleBars from './Widgets/CircleBars'
-import BarsState from './Widgets/BarsState'
 import ColorfulBars from './Widgets/ColorfulBars'
+import StandardBars from './Widgets/StandardBars'
 
 export default {
   name: 'progress-bars',
-  components: { HorizontalBars, CircleBars, BarsState, ColorfulBars },
+  components: { StandardBars, ColorfulBars },
 }
 </script>

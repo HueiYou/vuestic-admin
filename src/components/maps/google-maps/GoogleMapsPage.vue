@@ -1,13 +1,13 @@
 <template>
   <div class="google-maps-page">
     <div class="row">
-      <div class="flex md12 xs12">
-        <va-card
+      <div class="col-md-12">
+        <vuestic-widget
           class="google-maps-page__widget"
-          title="Google Maps"
+          headerText="Google Maps"
         >
-          <google-map style="height: 65vh;" />
-        </va-card>
+          <google-map/>
+        </vuestic-widget>
       </div>
     </div>
   </div>
@@ -19,7 +19,15 @@ import GoogleMap from './GoogleMap'
 export default {
   name: 'google-maps-page',
   components: {
-    GoogleMap,
-  },
+    GoogleMap
+  }
 }
 </script>
+
+<style lang="scss">
+ .google-maps-page{
+   &__widget {
+     height: 70vh;
+   }
+ }
+</style>

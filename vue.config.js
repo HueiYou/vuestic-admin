@@ -1,29 +1,11 @@
 const path = require('path')
-const webpack = require('webpack')
-const StylelintPlugin = require('stylelint-webpack-plugin')
-
-const version = require('./package.json').version
-const timeStamp = new Date().toUTCString()
-
-const getLastCommitHash = () => {
-  const hash = require('child_process').execSync('git rev-parse HEAD')
-    .toString()
-
-  return hash.slice(0, 6)
-}
-
-const lintOnSave = true
 
 module.exports = {
-  lintOnSave,
-  transpileDependencies: [
-    'vuestic-ui',
-    'epic-spinners',
-  ],
+  lintOnSave: false,
   pages: {
     index: {
       // entry for the page
-      entry: 'src/app/main.js',
+      entry: 'src/main.js',
       // the source template
       template: 'public/index.html',
       // output as dist/index.html
@@ -39,36 +21,29 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        vue$: 'vue/dist/vue.esm.js',
+        'vue$': 'vue/dist/vue.esm.js',
         '@': path.resolve('src'),
-      },
+        'src': path.resolve('src'),
+        'assets': path.resolve('src/assets'),
+        'components': path.resolve('src/components'),
+        'services': path.resolve('src/services'),
+        'directives': path.resolve('src/directives'),
+        'vuestic-mixins': path.resolve('src/vuestic-theme/vuestic-mixins'),
+        'vuestic-components': path.resolve('src/vuestic-theme/vuestic-components'),
+        'vuestic-directives': path.resolve('src/vuestic-theme/vuestic-directives'),
+        'vuestic-theme': path.resolve('src/vuestic-theme'),
+        'data': path.resolve('src/data'),
+        'vuex-store': path.resolve('src/store')
+      }
     },
-    plugins: [
-      ...(
-        (!lintOnSave && process.env.NODE_ENV === 'development') ? [] : [new StylelintPlugin({
-          files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
-        })]
-      ),
-      new webpack.DefinePlugin({
-        VERSION: JSON.stringify(version),
-        TIMESTAMP: JSON.stringify(timeStamp),
-        COMMIT: JSON.stringify(getLastCommitHash()),
-      }),
-    ],
   },
   css: {
     loaderOptions: {
+      // pass options to sass-loader
       sass: {
-        // Preload vuestic-ui variables and mixins for every component
-        data: '@import "~vuestic-ui/src/components/vuestic-sass/resources/resources.scss";',
-      },
-    },
-  },
-  pwa: {
-    workboxPluginMode: 'InjectManifest',
-    workboxOptions: {
-      swSrc: './src/service-worker.js',
-      importWorkboxFrom: 'local',
-    },
-  },
+        // @/ is an alias to src/
+        data: `@import "@/sass/shared.scss";`
+      }
+    }
+  }
 }

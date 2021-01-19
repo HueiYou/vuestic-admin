@@ -11,6 +11,9 @@
     "termsOfUse": "Termos de uso.",
     "welcome": "Bem vindo!"
   },
+  "breadcrumbs": {
+    "home": "Início"
+  },
   "buttons": {
     "advanced": "Icones, Grupos, Dropdowns",
     "button": "BOTÃO",
@@ -36,14 +39,7 @@
     "successMessage": "Você leu com sucesso esta mensagem importante de alerta.",
     "elements": "Elementos",
     "teamMembers": "Membros da Equipe",
-    "versions": "Versões",
-    "table": {
-      "title": "Mesa impressionante",
-      "brief": "Breve",
-      "detailed": "Detalhado",
-      "resolve": "Resolver",
-      "resolved": "Resolvido"
-    }
+    "versions": "Versões"
   },
   "notificationsPage": {
     "alerts": {
@@ -77,8 +73,20 @@
       "launchToast": "Launch toast"
     }
   },
+  "extra": {
+    "tabs": {
+      "title": "Guias",
+      "maps": "Mapas",
+      "overview": "Visão geral",
+      "setupProfile": "Perfil de instalação"
+    },
+    "chat": "Gráficos",
+    "profileCard": "Cartão de perfil"
+  },
   "forms": {
     "controls": {
+      "female": "Feminino",
+      "male": "Masculino",
       "title": "Checkboxes, Radios, Switches",
       "radioDisabled": "Radio Desabilitado",
       "radio": "Radio",
@@ -114,6 +122,18 @@
       "multi": "Selecionar Múltiplos",
       "simple": "Selecionador Simples",
       "title": "Selecionadores"
+    },
+    "wizard": {
+      "name": "Nome",
+      "completed": "Wizard completo!",
+      "confirmSelection": "Confirmar seleção",
+      "rich": "Preencher Wizard",
+      "simple": "Wizard Simples",
+      "stepOne": "Etapa 1. Nome",
+      "stepTwo": "Etapa 2. Região",
+      "stepThree": "Etapa 3. Confirme",
+      "verticalRich": "Preencher Wizard Vertical",
+      "verticalSimple": "Wizard Vertical Simples"
     }
   },
   "grid": {
@@ -135,8 +155,7 @@
   "language": {
     "brazilian_portuguese": "Português",
     "english": "English",
-    "spanish": "Spanish",
-    "simplified_chinese": "Chinês simplificado"
+    "spanish": "Spanish"
   },
   "menu": {
     "auth": "Autorização",
@@ -144,8 +163,10 @@
     "charts": "Gráficos",
     "colorPickers": "Colhedores de Cor",
     "dashboard": "Painel principal",
+    "extra": "Extra",
     "formElements": "Elementos de Formulários",
     "forms": "Formulários",
+    "formWizards": "Formulários Wizards",
     "mediumEditor": "Editor Medium",
     "grid": "Grid",
     "icons": "Icones",
@@ -158,15 +179,11 @@
     "progressBars": "Barra de progresso",
     "signUp": "Cadastrar-se",
     "statistics": "Estatística",
-    "lists": "Listas",
     "tables": "Tabelas",
-    "markupTables": "Tabelas de Marcação",
-    "dataTables": "Tabelas de Dados",
     "typography": "Tipografia",
     "uiElements": "Elementos UI",
     "treeView": "Árvore de visualização",
-    "dateTimePickers": "Selecionar Data e Hora",
-    "chat": "Gráficos"
+    "dateTimePickers": "Selecionar Data e Hora"
   },
   "messages": {
     "all": "Ver todas as menssagens",
@@ -197,45 +214,27 @@
     "startedTopic": "{name} iniciou um novo tópico"
   },
   "progressBars": {
+    "basic": "Básico",
+    "basicVertical": "Básico Vertical",
     "circle": "Círculo",
-    "horizontal": "Horizontal",
-    "colors": "Cores"
-  },
-  "lists": {
-    "customers": "Clientes",
-    "recentMessages": "Mensagens Recentes",
-    "archieved": "Arquivado",
-    "starterKit": "Kit iniciante",
-    "notifications": "Notificações"
+    "colorFulTitle": "Barra Colorida completa",
+    "thin": "Fina",
+    "thinVertical": "Fina Vertical",
+    "thick": "Grosso",
+    "title": "Barra de Progresso"
   },
   "tables": {
-    "basic": "Mesa Básica",
-    "stripedHoverable": "Listrado, flutuante",
-    "labelsActions": "Etiquetas, ações como botões",
-    "sortingPaginationActionsAsIcons": "Ordenação, Paginação, Ações como Ícones",
-    "star": "Star",
-    "unstar": "Unstar",
-    "edit": "Editar",
-    "delete": "Excluir",
-    "searchByName": "Procura por nome",
-    "searchTrendsBadges": "Pesquisa, Tendências, Emblemas",
-    "perPage": "Por página",
-    "report": "Relatório",
-    "infiniteScroll": "Rolagem infinita",
-    "selectable": "Selecionável",
-    "selected": "Selecionado",
-    "serverSidePagination": "Server-Side Paginação",
-    "emptyTable": "Mesa Vazia",
-    "noDataAvailable": "Nenhum dado disponível.",
-    "noReport": "Não há dados para exibir. O relatório estará disponível em 3 de novembro de 2018.",
-    "loading": "Carregando",
+    "basic": "Tabela Básico",
+    "styled": "Cores, Icones, Rótulos",
+    "advanced": "Pesquisar & Paginação",
     "headings": {
+      "city": "Cidade",
       "email": "Email",
       "name": "Nome",
-      "firstName": "Primeiro nome",
-      "lastName": "Último nome",
-      "status": "Status",
-      "country": "País"
+      "score": "Contagem"
+    },
+    "dataTable": {
+      "noDataAvailable": "No Data Available"
     }
   },
   "user": {
@@ -249,8 +248,5 @@
     "selectable": "Selecionável",
     "editable": "Editável",
     "advanced": "Advançado"
-  },
-  "chat": {
-    "title": "Gráficos"
   }
 }

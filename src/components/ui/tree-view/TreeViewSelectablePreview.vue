@@ -1,24 +1,24 @@
 <template>
-  <va-tree-root>
-    <va-tree-category label="Products">
-      <va-tree-node v-for="product in products" :key="product.id">
-        <va-checkbox
+  <vuestic-tree-root>
+    <vuestic-tree-category label="Products">
+      <vuestic-tree-node v-for="product in products" :key="product.id">
+        <vuestic-checkbox
           slot="checkbox"
           v-model="product.selected"
         />
-        {{ product.name }}
-      </va-tree-node>
-    </va-tree-category>
-    <va-tree-category isOpen label="Electronics">
-      <va-tree-node v-for="electronic in electronics" :key="electronic.id">
-        <va-checkbox
+          {{ product.name }}
+      </vuestic-tree-node>
+    </vuestic-tree-category>
+    <vuestic-tree-category isOpen label="Electronics">
+      <vuestic-tree-node v-for="electronic in electronics" :key="electronic.id">
+        <vuestic-checkbox
           slot="checkbox"
           v-model="electronic.selected"
         />
         {{ electronic.name }}
-      </va-tree-node>
-    </va-tree-category>
-  </va-tree-root>
+      </vuestic-tree-node>
+    </vuestic-tree-category>
+  </vuestic-tree-root>
 </template>
 
 <script>
@@ -35,7 +35,7 @@ export default {
         { id: 4, name: 'Cables', selected: false },
         { id: 5, name: 'Monitors', selected: false },
         { id: 6, name: 'Keyboards', selected: false },
-      ],
+      ]
     }
   },
 }

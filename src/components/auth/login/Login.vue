@@ -1,61 +1,55 @@
 <template>
-  <form @submit.prevent="onsubmit">
-    <va-input
-      v-model="email"
-      type="email"
-      :label="$t('auth.email')"
-      :error="!!emailErrors.length"
-      :error-messages="emailErrors"
-    />
-
-    <va-input
-      v-model="password"
-      type="password"
-      :label="$t('auth.password')"
-      :error="!!passwordErrors.length"
-      :error-messages="passwordErrors"
-    />
-
-    <div class="auth-layout__options d-flex align--center justify--space-between">
-      <va-checkbox v-model="keepLoggedIn" class="mb-0" :label="$t('auth.keep_logged_in')"/>
-      <router-link class="ml-1 link" :to="{name: 'recover-password'}">{{$t('auth.recover_password')}}</router-link>
-    </div>
-
-    <div class="d-flex justify--center mt-3">
-      <va-button type="submit" class="my-0">{{ $t('auth.login') }}</va-button>
-    </div>
-  </form>
+  <div class="login">
+    <h2>{{'auth.welcome' | translate}}</h2>
+    <form method="post" action="/auth/login" name="login">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" id="email" required="required"/>
+          <label class="control-label" for="email">{{'auth.email' | translate}}</label><i class="bar"></i>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <input type="password" id="password" required="required"/>
+          <label class="control-label" for="password">{{'auth.password' | translate}}</label><i class="bar"></i>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between down-container">
+        <button class="btn btn-primary" type="submit">
+          {{'auth.login' | translate}}
+        </button>
+        <router-link class='link' :to="{name: 'signup'}">{{'auth.createAccount' | translate}}</router-link>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'login',
-  data () {
-    return {
-      email: '',
-      password: '',
-      keepLoggedIn: false,
-      emailErrors: [],
-      passwordErrors: [],
-    }
-  },
-  computed: {
-    formReady () {
-      return !this.emailErrors.length && !this.passwordErrors.length
-    },
-  },
-  methods: {
-    onsubmit () {
-      this.emailErrors = this.email ? [] : ['Email is required']
-      this.passwordErrors = this.password ? [] : ['Password is required']
-      if (!this.formReady) {
-        return
-      }
-      this.$router.push({ name: 'dashboard' })
-    },
-  },
+  name: 'login'
 }
 </script>
 
 <style lang="scss">
+  .login {
+    @include media-breakpoint-down(md) {
+      width: 100%;
+      padding-right: 2rem;
+      padding-left: 2rem;
+      .down-container {
+        .link {
+          margin-top: 2rem;
+        }
+      }
+    }
+
+    h2 {
+      text-align: center;
+    }
+    width: 21.375rem;
+
+    .down-container {
+      margin-top: 3.125rem;
+    }
+  }
 </style>

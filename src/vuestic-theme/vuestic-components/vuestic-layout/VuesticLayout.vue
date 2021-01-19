@@ -1,7 +1,7 @@
 <template>
-  <div class="vuestic-layout"
-    v-resize
-    :class="classObject"
+  <div class="layout"
+       v-resize
+       :class="classObject"
   >
     <slot></slot>
     <div class="content-wrap" id="content-wrap">
@@ -15,8 +15,10 @@
 
 <script>
 import Resize from '../../../directives/ResizeHandler'
+
 export default {
   name: 'vuestic-layout',
+
   props: {
     fixed: {
       type: Boolean,
@@ -29,59 +31,58 @@ export default {
   computed: {
     classObject: function () {
       return {
-        'layout-fixed': this.fixed,
+        'layout-fixed': this.fixed
       }
-    },
-  },
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-.vuestic-layout {
-  .content-wrap {
-    margin-left: $content-wrap-ml;
-    transition: margin-left 0.3s ease;
-    padding: $layout-padding $layout-padding-right $content-wrap-pb 0;
+  .layout {
+    &-fixed {
+      .content-wrap {
+        padding-right: $layout-padding-right;
+        padding-top: $sidebar-top;
 
-    .pre-loader {
-      position: absolute;
-      left: $vuestic-preloader-left;
-      top: $vuestic-preloader-top;
-    }
+        @include media-breakpoint-down(md) {
+          padding: $content-mobile-wrap-fixed-layout;
+          margin-left: 0;
 
-    @include media-breakpoint-down(md) {
-      padding: $content-mobile-wrap;
-      margin-left: 0;
-
-      .sidebar-hidden & {
-        margin-left: 0;
-        padding-top: $content-mobile-wrap-sb-top;
+        }
       }
     }
-  }
 
-  &-fixed {
     .content-wrap {
-      padding-right: $layout-padding-right;
-      padding-top: $sidebar-top;
+      margin-left: $content-wrap-ml;
+      transition: margin-left 0.3s ease;
+      padding: $layout-padding $layout-padding-right $content-wrap-pb 0;
+
+      .pre-loader {
+        position: absolute;
+        left: $vuestic-preloader-left;
+        top: $vuestic-preloader-top;
+      }
 
       @include media-breakpoint-down(md) {
-        padding: $content-mobile-wrap-fixed-layout;
+        padding: $content-mobile-wrap;
         margin-left: 0;
+        .sidebar-hidden & {
+          margin-left: 0;
+          padding-top: $content-mobile-wrap-sb-top;
+        }
       }
     }
+    .made-by-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 25px;
+      padding-bottom: $made-by-footer-pb;
+      position: absolute;
+      bottom: 0;
+      height: calc(#{$layout-padding} + #{$widget-mb});
+      width: 100%;
+    }
   }
-
-  .made-by-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 25px;
-    padding-bottom: $made-by-footer-pb;
-    position: absolute;
-    bottom: 0;
-    height: calc(#{$layout-padding} + #{$widget-mb});
-    width: 100%;
-  }
-}
 </style>

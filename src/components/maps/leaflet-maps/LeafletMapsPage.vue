@@ -1,13 +1,13 @@
 <template>
   <div class="leaflet-maps-page">
     <div class="row">
-      <div class="flex md12 xs12">
-        <va-card
+      <div class="col-md-12">
+        <vuestic-widget
           class="leaflet-maps-page__widget"
-          title="Leaflet Maps"
+          headerText="Leaflet Maps"
         >
-          <leaflet-map style="height: 65vh;" />
-        </va-card>
+          <leaflet-map/>
+        </vuestic-widget>
       </div>
     </div>
   </div>
@@ -23,3 +23,11 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.leaflet-maps-page {
+  &__widget {
+    height: 70vh;
+  }
+}
+</style>

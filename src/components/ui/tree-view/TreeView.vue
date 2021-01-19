@@ -1,46 +1,46 @@
 <template>
-  <div class="tree-view sets-list row">
-    <div class="flex md12 xs12">
+  <div class="sets-list row">
+    <div class="col-md-12">
       <div class="row">
-        <div class="small-set flex lg6 xs12">
-          <va-card :title="$t('treeView.basic')">
+
+        <div class="small-set col-lg-6">
+          <vuestic-widget :headerText="$t('treeView.basic')">
             <tree-view-basic-preview/>
-          </va-card>
+          </vuestic-widget>
         </div>
 
-        <div class="small-set flex lg6 xs12">
-          <va-card :title="$t('treeView.icons')">
+        <div class="small-set col-lg-6">
+          <vuestic-widget :headerText="$t('treeView.icons')">
             <tree-view-icons-preview/>
-          </va-card>
+          </vuestic-widget>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="small-set flex lg6 xs12">
-          <va-card :title="$t('treeView.advanced')">
+        <div class="small-set col-lg-6">
+          <vuestic-widget :headerText="$t('treeView.advanced')">
             <tree-view-advanced-preview/>
-          </va-card>
+          </vuestic-widget>
         </div>
 
-        <div class="small-set flex lg6 xs12">
-          <va-card :title="$t('treeView.editable')">
+        <div class="small-set col-lg-6">
+          <vuestic-widget :headerText="$t('treeView.editable')">
             <tree-view-editable-preview/>
-          </va-card>
+          </vuestic-widget>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="small-set flex lg6 xs12">
-          <va-card :title="$t('treeView.selectable')">
+        <div class="small-set col-lg-6">
+          <vuestic-widget :headerText="$t('treeView.selectable')">
             <tree-view-selectable-preview/>
-          </va-card>
+          </vuestic-widget>
         </div>
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import VuesticWidget
+  from '../../../vuestic-theme/vuestic-components/vuestic-widget/VuesticWidget.vue'
 import TreeViewBasicPreview from './TreeViewBasicPreview'
 import TreeViewIconsPreview from './TreeViewIconsPreview'
 import TreeViewSelectablePreview from './TreeViewSelectablePreview'
@@ -55,11 +55,16 @@ export default {
     TreeViewSelectablePreview,
     TreeViewIconsPreview,
     TreeViewBasicPreview,
+    VuesticWidget
   },
   data () {
     return {
-      treeViewData: {},
+      treeViewData: {}
     }
-  },
+  }
 }
 </script>
+
+<style lang="scss">
+
+</style>

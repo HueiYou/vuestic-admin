@@ -1,16 +1,13 @@
 <template>
   <div class="line-maps-page">
     <div class="row">
-      <div class="flex md12 xs12">
-        <va-card
+      <div class="col-md-12">
+        <vuestic-widget
           class="line-maps-page__widget"
-          title="Line Maps"
+          headerText="Line Maps"
         >
-          <line-map
-            :map-data="lineMapData"
-            style="height: 65vh;"
-          />
-        </va-card>
+          <line-map v-bind:map-data="lineMapData"/>
+        </vuestic-widget>
       </div>
     </div>
   </div>
@@ -18,17 +15,25 @@
 
 <script>
 import LineMap from './LineMap'
-import { getLineMapData } from '../../../data/maps/LineMapData'
+import LineMapData from 'data/maps/LineMapData'
 
 export default {
   name: 'line-maps-page',
   components: {
     LineMap,
   },
-  computed: {
-    lineMapData () {
-      return getLineMapData(this.$themes)
-    },
+  data () {
+    return {
+      lineMapData: LineMapData,
+    }
   },
 }
 </script>
+
+<style lang="scss">
+.line-maps-page {
+  &__widget {
+    height: 70vh;
+  }
+}
+</style>

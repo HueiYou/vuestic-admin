@@ -1,10 +1,12 @@
 <template>
-  <div class="icons">
+  <div class="ui-icons">
     <router-view :sets="sets"></router-view>
   </div>
 </template>
 
 <script>
+import FullSet from './Set'
+
 const iconTypes = [
   'vuestic',
   'brandico',
@@ -15,38 +17,45 @@ const iconTypes = [
   'iconic-stroke',
   'ionicons',
   'maki',
-  'openweb',
-  'material-icons',
+  'openweb'
 ]
 
 export default {
   name: 'icons',
+  components: {
+    FullSet
+  },
   computed: {
     sets () {
-      const sets = []
+      let sets = []
       iconTypes.forEach(iconType => {
-        const set = require('./sets/' + iconType + '.json')
-        this.addFilteredListsTo(set)
+        let set = require('./sets/' + iconType + '.json')
+        this.addfilteredListsTo(set)
         sets.push(set)
       })
       return sets
-    },
+    }
   },
   methods: {
-    addFilteredListsTo (set) {
-      // This allows us to add icons to icon set.
-      const list = set.lists[0].icons
-      const filteredLists = []
+    addfilteredListsTo (set) {
+      let list = set.lists[0].icons
+      let filteredLists = []
       filteredLists.push(list.slice(0, 6))
       filteredLists.push(list.slice(6, 8))
       filteredLists.push(list.slice(8, 14))
       set.filteredLists = filteredLists
-    },
+    }
   },
   data () {
     return {
-      setsPath: './sets/',
+      setsPath: './sets/'
     }
-  },
+  }
 }
 </script>
+
+<style lang="scss">
+  .ui-icons {
+
+  }
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="line-map fill-height">
+  <div class='line-map'>
     Line Map
   </div>
 </template>
@@ -17,56 +17,53 @@ export default {
   name: 'line-map',
 
   props: ['mapData'],
-  watch: {
-    mapData () {
-      this.addDataToMap()
-      this.map.validateData()
-    },
-  },
-  data () {
-    return {
-      dataProvider: {
-        mapVar: AmCharts.maps.worldLow,
-      },
-    }
-  },
-  computed: {
-    map () {
-      return new AmCharts.AmMap()
-    },
-  },
+
   methods: {
     drawMap () {
       /* global AmCharts */
-      this.map.areasSettings = {
+      let map
+
+      map = new AmCharts.AmMap()
+
+      let dataProvider = {
+        mapVar: AmCharts.maps.worldLow
+      }
+      map.areasSettings = {
         unlistedAreasColor: '#eee',
         unlistedAreasAlpha: 1,
         outlineColor: '#fff',
-        outlineThickness: 2,
+        outlineThickness: 2
       }
-      this.map.imagesSettings = {
-        color: this.$themes.info,
-        rollOverColor: this.$themes.info,
-        selectedColor: this.$themes.primary,
+      map.imagesSettings = {
+        color: '#6bbfe4',
+        rollOverColor: '#6bbfe4',
+        selectedColor: '#6be59c'
       }
-      this.map.linesSettings = {
-        color: this.$themes.info,
-        alpha: 0.4,
+      map.linesSettings = {
+        color: '#6bbfe4',
+        alpha: 0.4
       }
-      this.addDataToMap()
-      this.map.dataProvider = this.dataProvider
-      this.map.backgroundZoomsToTop = true
-      this.map.linesAboveImages = true
 
-      this.map.write(this.$el)
-    },
-    addDataToMap () {
-      this.dataProvider.linkToObject = this.mapData.mainCity
-      this.dataProvider.images = this.mapData.cities
-    },
+      dataProvider.linkToObject = this.mapData.mainCity
+      dataProvider.images = this.mapData.cities
+      map.dataProvider = dataProvider
+      map.backgroundZoomsToTop = true
+      map.linesAboveImages = true
+
+      map.write(this.$el)
+    }
   },
+
   mounted () {
     this.drawMap()
-  },
+  }
 }
 </script>
+
+<style lang='scss'>
+  @import '~ammap3/ammap/ammap.css';
+
+  .line-map {
+    height: 100%;
+  }
+</style>
